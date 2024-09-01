@@ -15,12 +15,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->label->setText("Obrigado Por Contribuir");
+    ui->label->setText("Obrigado Por Contribuir");  // botão para mudança no texto
 }
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    ui->label->setText("https://github.com/Luisf66/Qt-Creator.git");
+
+    QString estilo = "background-color: #0000FF;color: #FFFF00;";
+
+    ui->label->setText("https://github.com/Luisf66/Qt-Creator.git");  // botão para mudança no texto
+    ui->label->setStyleSheet(estilo); // botão para mudança no estilo do texto
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    close();
 }
 
