@@ -12,3 +12,15 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->label->setText("Obrigado Por Contribuir");
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->label->setText("https://github.com/Luisf66/Qt-Creator.git");
+}
+
