@@ -23,7 +23,6 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-
     QString estilo = "background-color: #0000FF;color: #FFFF00;";
 
     ui->label->setText("https://github.com/Luisf66/Qt-Creator.git");  // botão para mudança no texto
