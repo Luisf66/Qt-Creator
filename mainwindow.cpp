@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QMessageBox>
+#include <QtDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -30,20 +31,15 @@ void MainWindow::on_pushButton_2_clicked()
 }
 
 
-void MainWindow::on_pushButton_3_clicked()
-{
-    close();
-}
-
-
 void MainWindow::on_pushButton_4_clicked()
 {
-    QMessageBox::about(this,"Mensagem Teste","Você clicou em uma mensagem de Teste");
-    /*
-    QMessageBox::warning
-    QMessageBox::question
-    QMessageBox::information
-    QMessageBox::critical
-    */
+    QMessageBox::StandardButton resposta = QMessageBox::question(this,"","Deseja Encerrar a Aplicação?",QMessageBox::Yes | QMessageBox::No);
+    if(resposta == QMessageBox::Yes)
+    {
+        close();
+    }
+    else {
+        qDebug() << "Aplicação não Finalizada";
+    }
 }
 
