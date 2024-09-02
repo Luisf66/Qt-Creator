@@ -23,6 +23,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Aula_01
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        janelasecundaria.h janelasecundaria.cpp janelasecundaria.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Aula_01 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

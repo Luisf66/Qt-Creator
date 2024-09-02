@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+
 #include <QMessageBox>
 #include <QtDebug>
+
+#include "janelasecundaria.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -40,5 +43,13 @@ void MainWindow::on_pushButton_4_clicked()
     else {
         qDebug() << "Aplicação não Finalizada";
     }
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    JanelaSecundaria guia2;
+
+    guia2.exec();
 }
 
