@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->statusbar->addPermanentWidget(ui->pushButton_3);
 }
 
 MainWindow::~MainWindow()

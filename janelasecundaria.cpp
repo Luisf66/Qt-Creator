@@ -8,7 +8,7 @@ JanelaSecundaria::JanelaSecundaria(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QPixmap logo("/home/luis/Imagens/github-logo.webp");
+    QPixmap logo(":/img/imagens/Firefox_wallpaper.png");
     ui->Imagem_github->setPixmap(logo.scaled(585,368,Qt::KeepAspectRatio));
 }
 
@@ -19,7 +19,7 @@ JanelaSecundaria::~JanelaSecundaria()
 
 void JanelaSecundaria::on_Mudar_Imagem_clicked()
 {
-    QPixmap imagem("/home/luis/Firefox_wallpaper.png");
+    QPixmap imagem(":/img/imagens/github-logo.webp");
     ui->Imagem_github->setPixmap(imagem.scaled(690,388,Qt::KeepAspectRatio));
 }
 

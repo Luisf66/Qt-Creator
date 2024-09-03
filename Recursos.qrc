@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>imagens/Firefox_wallpaper.png</file>
+        <file>imagens/github-logo.webp</file>
+    </qresource>
+</RCC>
