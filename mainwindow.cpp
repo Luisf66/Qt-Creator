@@ -49,7 +49,26 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     JanelaSecundaria guia2;
-
     guia2.exec();
+}
+
+
+void MainWindow::on_btn_exibir_clicked()
+{
+    QString nome = ui->campo_nome->text(); //  salvar campo nome
+    QString email = ui->campo_email->text(); //  salvar campo email
+    QString telefone = ui->campo_telefone->text();  //  salvar campo telefone
+
+    QMessageBox::information(this,"Dados Preenchidos","Nome:"+nome+"\nE-mail:"+email+"\nTelefone:"+telefone); // exibir os dados salvos
+}
+
+
+void MainWindow::on_btn_limpar_clicked()
+{
+    ui->campo_nome->clear();
+    ui->campo_email->clear();
+    ui->campo_telefone->clear();
+
+    ui->campo_nome->setFocus();
 }
 
