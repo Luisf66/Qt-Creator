@@ -15,6 +15,9 @@ public:
     explicit JanelaSecundaria(QWidget *parent = nullptr);
     ~JanelaSecundaria();
 
+private slots:
+    void on_Mudar_Imagem_clicked();
+
 private:
     Ui::JanelaSecundaria *ui;
 };
