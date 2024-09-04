@@ -50,13 +50,58 @@
     <rect>
      <x>40</x>
      <y>180</y>
-     <width>87</width>
-     <height>26</height>
+     <width>171</width>
+     <height>41</height>
     </rect>
    </property>
-   <property name="text">
-    <string>PushButton</string>
+   <property name="styleSheet">
+    <string notr="true"> background-color: #4CAF50; /* Cor de fundo do botão */
+  color: white; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  border: none; /* Remover borda padrão */
+  border-radius: 15px; /* Arredondar bordas */
+  font-size: 16px; /* Tamanho da fonte */</string>
    </property>
+   <property name="text">
+    <string>Mudar Imagem</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>70</y>
+     <width>125</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="checkBox">
+        <property name="text">
+         <string>CheckBox</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_2">
+        <property name="text">
+         <string>CheckBox</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Mostrar Seleções</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
