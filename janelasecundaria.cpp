@@ -42,3 +42,25 @@ void JanelaSecundaria::on_pushButton_clicked()
     QMessageBox::about(this,"Objetos Selecionados", mensagem);
 }
 
+
+void JanelaSecundaria::on_btn_adicionar_clicked()
+{
+    ui->listWidget->addItem(ui->lineEdit->text());
+    ui->lineEdit->clear();
+    ui->lineEdit->setFocus();
+}
+
+
+void JanelaSecundaria::on_btn_marcar_clicked()
+{
+    ui->listWidget->currentItem()->setForeground(Qt::lightGray);
+    ui->listWidget->currentItem()->setBackground(Qt::darkBlue);
+}
+
+
+void JanelaSecundaria::on_btn_desmarcar_clicked()
+{
+    ui->listWidget->currentItem()->setForeground(Qt::black);
+    ui->listWidget->currentItem()->setBackground(Qt::white);
+}
+
