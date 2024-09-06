@@ -2,6 +2,7 @@
 #include "ui_janelasecundaria.h"
 #include <QPixmap>
 #include "QMessageBox"
+#include "chat.h"
 
 JanelaSecundaria::JanelaSecundaria(QWidget *parent)
     : QDialog(parent)
@@ -62,5 +63,17 @@ void JanelaSecundaria::on_btn_desmarcar_clicked()
 {
     ui->listWidget->currentItem()->setForeground(Qt::black);
     ui->listWidget->currentItem()->setBackground(Qt::white);
+}
+
+
+void JanelaSecundaria::on_tabWidget_tabCloseRequested(int index)
+{
+    ui->tabWidget->removeTab(index);
+}
+
+
+void JanelaSecundaria::on_btn_adicionar_tab_clicked()
+{
+    ui->tabWidget->addTab(new Chat(),"Novo Chat");
 }
 

@@ -26,6 +26,10 @@ private slots:
 
     void on_btn_desmarcar_clicked();
 
+    void on_tabWidget_tabCloseRequested(int index);
+
+    void on_btn_adicionar_tab_clicked();
+
 private:
     Ui::JanelaSecundaria *ui;
 };
