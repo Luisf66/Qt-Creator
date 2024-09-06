@@ -30,6 +30,8 @@ private slots:
 
     void on_btn_adicionar_tab_clicked();
 
+    void on_btn_enviar_clicked();
+
 private:
     Ui::JanelaSecundaria *ui;
 };

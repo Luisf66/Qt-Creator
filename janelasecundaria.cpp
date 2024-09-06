@@ -3,6 +3,11 @@
 #include <QPixmap>
 #include "QMessageBox"
 #include "chat.h"
+#include <QFile>
+#include <QTextStream>
+
+QString local = "/home/luis/Qt-curso/Aula_01/arquivo_txt/";
+QString nome = "teste.txt";
 
 JanelaSecundaria::JanelaSecundaria(QWidget *parent)
     : QDialog(parent)
@@ -75,5 +80,20 @@ void JanelaSecundaria::on_tabWidget_tabCloseRequested(int index)
 void JanelaSecundaria::on_btn_adicionar_tab_clicked()
 {
     ui->tabWidget->addTab(new Chat(),"Novo Chat");
+}
+
+
+void JanelaSecundaria::on_btn_enviar_clicked()
+{
+    QFile arquivo(local+nome);
+    if(!arquivo.open(QFile::WriteOnly|QFile::Text))
+    {
+        QMessageBox::warning(this,"Falha","Erro ao abrir o arquivo");
+    }
+    QTextStream saida(&arquivo);
+    QString texto = ui->Chat->toPlainText();
+    saida  << texto;
+    arquivo.flush();
+    arquivo.close();
 }
 
