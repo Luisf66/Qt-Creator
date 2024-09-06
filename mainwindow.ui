@@ -17,8 +17,8 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>347</y>
+      <x>0</x>
+      <y>310</y>
       <width>284</width>
       <height>211</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>510</y>
+      <y>520</y>
       <width>101</width>
       <height>26</height>
      </rect>
@@ -103,7 +103,7 @@
      <string>Próxima Guia</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -241,9 +241,57 @@
      <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArquivo">
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <addaction name="actionNovo_Arquivo"/>
+    <addaction name="actionAbrir_Arquivo"/>
+    <addaction name="actionEditar_Arquivo"/>
+    <addaction name="actionDeletar_Arquivo"/>
+   </widget>
+   <addaction name="menuArquivo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNovo_Arquivo">
+   <property name="icon">
+    <iconset resource="Recursos.qrc">
+     <normaloff>:/icon/imagens/novo.png</normaloff>:/icon/imagens/novo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Novo Arquivo</string>
+   </property>
+  </action>
+  <action name="actionAbrir_Arquivo">
+   <property name="icon">
+    <iconset resource="Recursos.qrc">
+     <normaloff>:/icon/imagens/abrir.png</normaloff>:/icon/imagens/abrir.png</iconset>
+   </property>
+   <property name="text">
+    <string>Abrir Arquivo</string>
+   </property>
+  </action>
+  <action name="actionEditar_Arquivo">
+   <property name="icon">
+    <iconset resource="Recursos.qrc">
+     <normaloff>:/icon/imagens/editar.png</normaloff>:/icon/imagens/editar.png</iconset>
+   </property>
+   <property name="text">
+    <string>Editar Arquivo</string>
+   </property>
+  </action>
+  <action name="actionDeletar_Arquivo">
+   <property name="icon">
+    <iconset resource="Recursos.qrc">
+     <normaloff>:/icon/imagens/deletar.png</normaloff>:/icon/imagens/deletar.png</iconset>
+   </property>
+   <property name="text">
+    <string>Deletar Arquivo</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -25,6 +25,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         janelasecundaria.h janelasecundaria.cpp janelasecundaria.ui
         Recursos.qrc
+        chat.h chat.cpp chat.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Aula_01 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
