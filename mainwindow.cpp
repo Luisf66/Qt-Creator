@@ -1,10 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-
 #include <QMessageBox>
 #include <QtDebug>
-
 #include "janelasecundaria.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -12,12 +11,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->statusbar->addPermanentWidget(ui->pushButton_3);
+    tempo = new QTimer(this);
+    connect(tempo,SIGNAL(timeout()),this,SLOT(minha_funcao()));
+    tempo->start(1000);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+int contador = 0;
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -73,3 +77,8 @@ void MainWindow::on_btn_limpar_clicked()
     ui->campo_nome->setFocus();
 }
 
+void MainWindow::minha_funcao()
+{
+    contador++;
+    qDebug() << "Tempo Decorrido: " << contador;
+}
