@@ -2,6 +2,7 @@
 #define JANELASECUNDARIA_H
 
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
 class JanelaSecundaria;
@@ -16,6 +17,8 @@ public:
     ~JanelaSecundaria();
 
 private slots:
+    void minha_funcao();
+
     void on_Mudar_Imagem_clicked();
 
     void on_pushButton_clicked();
@@ -34,6 +37,7 @@ private slots:
 
 private:
     Ui::JanelaSecundaria *ui;
+    QTimer *tempo;
 };
 
 #endif // JANELASECUNDARIA_H
