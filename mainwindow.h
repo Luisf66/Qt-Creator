@@ -30,6 +30,8 @@ private slots:
 
     void on_btn_limpar_clicked();
 
+    void on_btn_guia3_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
