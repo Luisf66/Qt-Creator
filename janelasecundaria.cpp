@@ -3,6 +3,12 @@
 #include <QPixmap>
 #include "QMessageBox"
 #include "chat.h"
+#include <QFile>
+#include <QTextStream>
+#include <QDateTime>
+
+QString local = "/home/luis/Qt-curso/Aula_01/arquivo_txt/";
+QString nome = "teste.txt";
 
 JanelaSecundaria::JanelaSecundaria(QWidget *parent)
     : QDialog(parent)
@@ -12,12 +18,18 @@ JanelaSecundaria::JanelaSecundaria(QWidget *parent)
 
     QPixmap logo(":/img/imagens/Firefox_wallpaper.png");
     ui->Imagem_github->setPixmap(logo.scaled(785,568,Qt::KeepAspectRatio));
+
+    tempo = new QTimer(this);
+    connect(tempo,SIGNAL(timeout()),this,SLOT(minha_funcao()));
+    tempo->start(1000);
 }
 
 JanelaSecundaria::~JanelaSecundaria()
 {
     delete ui;
 }
+
+int contador = 0;
 
 void JanelaSecundaria::on_Mudar_Imagem_clicked()
 {
@@ -75,5 +87,27 @@ void JanelaSecundaria::on_tabWidget_tabCloseRequested(int index)
 void JanelaSecundaria::on_btn_adicionar_tab_clicked()
 {
     ui->tabWidget->addTab(new Chat(),"Novo Chat");
+}
+
+
+void JanelaSecundaria::on_btn_enviar_clicked()
+{
+    QFile arquivo(local+nome);
+    if(!arquivo.open(QFile::WriteOnly|QFile::Text))
+    {
+        QMessageBox::warning(this,"Falha","Erro ao abrir o arquivo");
+    }
+    QTextStream saida(&arquivo);
+    QString texto = ui->Chat->toPlainText();
+    saida  << texto;
+    arquivo.flush();
+    arquivo.close();
+}
+
+void JanelaSecundaria::minha_funcao()
+{
+    QTime tempoatual = QTime::currentTime();
+    QString tempotexto = tempoatual.toString("hh:mm:ss");
+    ui->relogio->setText(tempotexto);
 }
 

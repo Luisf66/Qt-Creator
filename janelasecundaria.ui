@@ -16,7 +16,7 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>180</x>
      <y>10</y>
      <width>125</width>
      <height>90</height>
@@ -55,8 +55,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>201</width>
-     <height>191</height>
+     <width>151</width>
+     <height>151</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -144,7 +144,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>406</x>
@@ -203,6 +203,19 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="relogio">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>170</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
   </widget>
  </widget>
  <resources/>

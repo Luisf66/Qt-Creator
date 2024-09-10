@@ -2,6 +2,7 @@
     <qresource prefix="/img">
         <file>imagens/Firefox_wallpaper.png</file>
         <file>imagens/github-logo.webp</file>
+        <file>imagens/ElectronicArts(8).png</file>
     </qresource>
     <qresource prefix="/icon">
         <file>imagens/abrir.png</file>

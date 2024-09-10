@@ -1,10 +1,10 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-
 #include <QMessageBox>
 #include <QtDebug>
-
 #include "janelasecundaria.h"
+#include "janelaterciaria.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -71,5 +71,11 @@ void MainWindow::on_btn_limpar_clicked()
     ui->campo_telefone->clear();
 
     ui->campo_nome->setFocus();
+}
+
+void MainWindow::on_btn_guia3_clicked()
+{
+    janelaterciaria guia3;
+    guia3.exec();
 }
 
