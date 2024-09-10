@@ -9,6 +9,16 @@ janelaterciaria::janelaterciaria(QWidget *parent)
     , ui(new Ui::janelaterciaria)
 {
     ui->setupUi(this);
+    QSqlDatabase banco = QSqlDatabase::addDatabase("QSQLITE");
+    banco.setDatabaseName("/home/luis/Qt-curso/Aula_01/Banco/teste.db");
+
+    if(!banco.open())
+    {
+        ui->label->setText("Conexão não estabelecida");
+    }
+    else{
+        ui->label->setText("Banco De Dados Conectado");
+    }
 }
 
 janelaterciaria::~janelaterciaria()

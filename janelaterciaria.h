@@ -2,6 +2,9 @@
 #define JANELATERCIARIA_H
 
 #include <QDialog>
+#include <QtSql>
+#include <QDebug>
+#include <QFileInfo>
 
 namespace Ui {
 class janelaterciaria;
