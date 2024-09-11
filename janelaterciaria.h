@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QFileInfo>
 
+#include "janelacontatos.h"
+
 namespace Ui {
 class janelaterciaria;
 }
@@ -23,6 +25,8 @@ private slots:
 
     void on_btn_link_clicked();
     void on_btn_login_clicked();
+
+    void on_btn_add_contato_clicked();
 
 private:
     Ui::janelaterciaria *ui;

@@ -79,3 +79,10 @@ void janelaterciaria::on_btn_login_clicked()
     }
 }
 
+
+void janelaterciaria::on_btn_add_contato_clicked()
+{
+    janelacontatos novo_contato;
+    novo_contato.exec();
+}
+
