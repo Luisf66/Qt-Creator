@@ -23,6 +23,16 @@ janelapesquisa::janelapesquisa(QWidget *parent)
             ui->tabela->setRowHeight(resultados,20);
             resultados++;
         }
+        ui->tabela->setColumnWidth(0,30);
+        ui->tabela->setColumnWidth(1,150);
+        ui->tabela->setColumnWidth(2,150);
+        ui->tabela->setColumnWidth(3,230);
+
+        QStringList cabecalho = {"ID","Nome","Telefone","E-mail"};
+        ui->tabela->setHorizontalHeaderLabels(cabecalho);
+        ui->tabela->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tabela->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tabela->verticalHeader()->setVisible(false);
     }else{
         QMessageBox::warning(this,"ERRO","Falha na Consulta");
     }
@@ -32,3 +42,21 @@ janelapesquisa::~janelapesquisa()
 {
     delete ui;
 }
+
+void janelapesquisa::on_btn_excluir_clicked()
+{
+    int linha = ui->tabela->currentRow();
+    int id = ui->tabela->item(linha,0)->text().toInt();
+    QSqlQuery query;
+    query.prepare("DELETE FROM tb_contatos WHERE id_contato="+QString::number(id));
+    if(query.exec())
+    {
+        ui->tabela->removeRow(linha);
+        QMessageBox::information(this,"Operação Finalizada","Contato removido");
+    }
+    else{
+        QMessageBox::warning(this,"Erro","Contato não removido");
+    }
+
+}
+

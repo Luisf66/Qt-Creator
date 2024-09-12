@@ -17,6 +17,9 @@ public:
     explicit janelapesquisa(QWidget *parent = nullptr);
     ~janelapesquisa();
 
+private slots:
+    void on_btn_excluir_clicked();
+
 private:
     Ui::janelapesquisa *ui;
 };
