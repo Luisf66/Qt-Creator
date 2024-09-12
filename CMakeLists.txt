@@ -28,6 +28,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         chat.h chat.cpp chat.ui
         janelaterciaria.h janelaterciaria.cpp janelaterciaria.ui
         janelacontatos.h janelacontatos.cpp janelacontatos.ui
+        janelapesquisa.h janelapesquisa.cpp janelapesquisa.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Aula_01 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

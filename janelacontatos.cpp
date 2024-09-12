@@ -34,3 +34,9 @@ void janelacontatos::on_btn_gravar_clicked()
         QMessageBox::warning(this,"Falha na Operação","Dados informados não foram salvos");
     }
 }
+
+void janelacontatos::on_btn_cancelar_clicked()
+{
+    close();
+}
+

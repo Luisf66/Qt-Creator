@@ -86,3 +86,9 @@ void janelaterciaria::on_btn_add_contato_clicked()
     novo_contato.exec();
 }
 
+
+void janelaterciaria::on_btn_ler_contato_clicked()
+{
+    janelapesquisa pesquisa_contato;
+    pesquisa_contato.exec();
+}

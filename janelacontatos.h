@@ -20,6 +20,8 @@ public:
 private slots:
     void on_btn_gravar_clicked();
 
+    void on_btn_cancelar_clicked();
+
 private:
     Ui::janelacontatos *ui;
 };
