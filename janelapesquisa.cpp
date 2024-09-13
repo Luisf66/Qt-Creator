@@ -60,3 +60,21 @@ void janelapesquisa::on_btn_excluir_clicked()
 
 }
 
+
+void janelapesquisa::on_btn_editar_clicked()
+{
+    int linha = ui->tabela->currentRow();
+    int id = ui->tabela->item(linha,0)->text().toInt();
+    janelaedita edita_contato(this,id);
+    edita_contato.exec();
+    QSqlQuery query;
+    query.prepare("SELECT * FROM tb_contatos WHERE id_contato="+QString::number(id));
+    if(query.exec())
+    {
+        query.first();
+        ui->tabela->setItem(linha,1,new QTableWidgetItem(query.value(1).toString()));
+        ui->tabela->setItem(linha,2,new QTableWidgetItem(query.value(2).toString()));
+        ui->tabela->setItem(linha,3,new QTableWidgetItem(query.value(3).toString()));
+    }
+}
+

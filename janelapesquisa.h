@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QtSql>
 #include <QMessageBox>
+#include "janelaedita.h"
 
 namespace Ui {
 class janelapesquisa;
@@ -19,6 +20,8 @@ public:
 
 private slots:
     void on_btn_excluir_clicked();
+
+    void on_btn_editar_clicked();
 
 private:
     Ui::janelapesquisa *ui;
