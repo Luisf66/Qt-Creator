@@ -2,6 +2,11 @@
 #define PG_PRINCIPAL_H
 
 #include <QMainWindow>
+#include <QtSql>
+#include <QMessageBox>
+#include <QDebug>
+
+#include "pg_login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,8 +23,9 @@ public:
     ~pg_principal();
     QIcon cadFechado;
     QIcon cadAberto;
-    bool bloqueado;
-
+    bool logado;
+    QString nome_colab, acesso_colab;
+    QSqlDatabase banco_db = QSqlDatabase::addDatabase("QSQLITE");
 
 private slots:
     void on_btn_bloquear_clicked();
