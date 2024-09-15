@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/imagens">
+        <file>img/simbolo-bloqueado.png</file>
+        <file>img/valido.png</file>
+    </qresource>
+</RCC>

@@ -16,6 +16,13 @@ class pg_principal : public QMainWindow
 public:
     pg_principal(QWidget *parent = nullptr);
     ~pg_principal();
+    QIcon cadFechado;
+    QIcon cadAberto;
+    bool bloqueado;
+
+
+private slots:
+    void on_btn_bloquear_clicked();
 
 private:
     Ui::pg_principal *ui;
