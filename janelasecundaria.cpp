@@ -7,7 +7,7 @@
 #include <QTextStream>
 #include <QDateTime>
 
-QString local = "/home/luis/Qt-curso/Aula_01/arquivo_txt/";
+QString local = "C:/Projeto_Qt/Qt-Creator/Arquivo/";
 QString nome = "teste.txt";
 
 JanelaSecundaria::JanelaSecundaria(QWidget *parent)
