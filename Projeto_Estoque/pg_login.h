@@ -19,10 +19,15 @@ public:
     ~pg_login();
     bool logado;
     Conexao con;
-
+    QString nome, acesso;
+    QString getNome();
+    QString getAcesso();
+    bool getLogado();
 
 private slots:
     void on_btn_login_clicked();
+
+    void on_btn_cancelar_clicked();
 
 private:
     Ui::pg_login *ui;

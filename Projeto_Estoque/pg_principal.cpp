@@ -14,6 +14,7 @@ pg_principal::pg_principal(QWidget *parent)
     ui->btn_bloquear->setText(""); // limpar texto do botão
     ui->btn_bloquear->setIcon(cadFechado); // colocar icone X no botão
     ui->statusbar->addWidget(ui->btn_bloquear); // colocar botão na barra de status
+    ui->statusbar->addWidget(ui->nome_colab); // colocar nome do colaborador na barra de status
 }
 
 pg_principal::~pg_principal()
@@ -27,10 +28,19 @@ void pg_principal::on_btn_bloquear_clicked()
     {
         pg_login logar;
         logar.exec(); // abertura da pagina de login
+        logado = logar.getLogado();
+        nome_colab = logar.getNome();
+        acesso_colab = logar.getAcesso();
+        if(logado)
+        {
+            ui->btn_bloquear->setIcon(cadAberto);
+            ui->nome_colab->setText(nome_colab);
+        }
     }
     else{
-        logado = true;
+        logado = false;
         ui->btn_bloquear->setIcon(cadAberto); // colocar icone Y no botão
+        ui->nome_colab->setText("Sem Colaborador");
     }
 }
 
