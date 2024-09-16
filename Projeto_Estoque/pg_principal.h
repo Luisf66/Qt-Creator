@@ -25,7 +25,6 @@ public:
     QIcon cadAberto;
     bool logado;
     QString nome_colab, acesso_colab;
-    QSqlDatabase banco_db = QSqlDatabase::addDatabase("QSQLITE");
 
 private slots:
     void on_btn_bloquear_clicked();
