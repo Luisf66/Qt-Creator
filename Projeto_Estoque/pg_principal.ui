@@ -53,14 +53,14 @@ border-radius: 20px;</string>
    <widget class="QLabel" name="nome_colab">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>480</y>
-      <width>81</width>
+      <x>80</x>
+      <y>500</y>
+      <width>121</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>nome colab</string>
+     <string>Sem colaborador</string>
     </property>
    </widget>
   </widget>

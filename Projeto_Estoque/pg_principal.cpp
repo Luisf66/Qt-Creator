@@ -44,3 +44,76 @@ void pg_principal::on_btn_bloquear_clicked()
     }
 }
 
+
+void pg_principal::on_btn_nova_venda_clicked()
+{
+    if(logado)
+    {
+        pg_nova_venda nova_venda;
+        nova_venda.exec();
+    }
+    else{
+        QMessageBox::information(this,"Operação Inválida","Realize o Login para prosseguir");
+    }
+}
+
+
+void pg_principal::on_actionEstoque_triggered()
+{
+    // logica de acesso para estoque
+    if(logado)
+    {
+        if(acesso_colab == "A")
+        {
+            pg_gestao_estoque gestao_estoque;
+            gestao_estoque.exec();
+        }
+        else{
+            QMessageBox::information(this,"Operação Inválida","Nível de Acesso Insuficiente");
+        }
+    }
+    else{
+        QMessageBox::information(this,"Operação Inválida","Realize o Login para prosseguir");
+    }
+}
+
+
+void pg_principal::on_actionColaboradores_triggered()
+{
+    // logica de acesso para colaboradores
+    if(logado)
+    {
+        if(acesso_colab == "A")
+        {
+            pg_gestao_colaboradores gestao_colaboradores;
+            gestao_colaboradores.exec();
+        }
+        else{
+            QMessageBox::information(this,"Operação Inválida","Nível de Acesso Insuficiente");
+        }
+    }
+    else{
+        QMessageBox::information(this,"Operação Inválida","Realize o Login para prosseguir");
+    }
+}
+
+
+void pg_principal::on_actionVendas_triggered()
+{
+    // logica de acesso para vendas
+    if(logado)
+    {
+        if(acesso_colab == "A")
+        {
+            pg_gestao_vendas gestao_vendas;
+            gestao_vendas.exec();
+        }
+        else{
+            QMessageBox::information(this,"Operação Inválida","Nível de Acesso Insuficiente");
+        }
+    }
+    else{
+        QMessageBox::information(this,"Operação Inválida","Realize o Login para prosseguir");
+    }
+}
+

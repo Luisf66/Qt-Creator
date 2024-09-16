@@ -26,6 +26,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Recursos.qrc
         pg_login.h pg_login.cpp pg_login.ui
         Conexao.h
+        pg_nova_venda.h pg_nova_venda.cpp pg_nova_venda.ui
+        pg_gestao_vendas.h pg_gestao_vendas.cpp pg_gestao_vendas.ui
+        pg_gestao_estoque.h pg_gestao_estoque.cpp pg_gestao_estoque.ui
+        pg_gestao_colaboradores.h pg_gestao_colaboradores.cpp pg_gestao_colaboradores.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Projeto_Estoque APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
