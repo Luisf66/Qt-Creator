@@ -5,6 +5,7 @@
 #include <QMessageBox>
 
 #include "Conexao.h"
+#include "pg_principal.h"
 
 namespace Ui {
 class pg_login;
@@ -20,10 +21,7 @@ public:
     bool logado;
     Conexao con;
     QString nome, acesso;
-    QString getNome();
-    QString getAcesso();
-    bool getLogado();
-
+    int id;
 private slots:
     void on_btn_login_clicked();
 

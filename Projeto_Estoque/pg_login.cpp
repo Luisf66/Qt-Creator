@@ -30,9 +30,11 @@ void pg_login::on_btn_login_clicked()
             query.first();
             if(query.value(1).toString() != "")
             {
-                logado = true;
-                nome = query.value(1).toString();
-                acesso = query.value(5).toString();
+                pg_principal::logado = true;
+                pg_principal::nome_colab = query.value(1).toString();
+                pg_principal::id_colab = query.value(0).toInt();
+                pg_principal::acesso_colab = query.value(5).toString();
+
                 con.desconectar();
                 close();
             }
@@ -52,19 +54,4 @@ void pg_login::on_btn_cancelar_clicked()
 {
     logado = false;
     close();
-}
-
-bool pg_login::getLogado()
-{
-    return logado;
-}
-
-QString pg_login::getNome()
-{
-    return nome;
-}
-
-QString pg_login::getAcesso()
-{
-    return acesso;
 }

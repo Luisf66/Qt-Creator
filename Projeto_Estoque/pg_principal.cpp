@@ -1,6 +1,12 @@
 #include "pg_principal.h"
 #include "./ui_pg_principal.h"
 
+int pg_principal::id_colab;
+QString pg_principal::nome_colab;
+QString pg_principal::acesso_colab;
+QString pg_principal::username_colab;
+bool pg_principal::logado;
+
 pg_principal::pg_principal(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::pg_principal)
@@ -28,9 +34,6 @@ void pg_principal::on_btn_bloquear_clicked()
     {
         pg_login logar;
         logar.exec(); // abertura da pagina de login
-        logado = logar.getLogado();
-        nome_colab = logar.getNome();
-        acesso_colab = logar.getAcesso();
         if(logado)
         {
             ui->btn_bloquear->setIcon(cadAberto);
