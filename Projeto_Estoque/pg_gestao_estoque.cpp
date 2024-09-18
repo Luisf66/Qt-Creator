@@ -27,10 +27,46 @@ void pg_gestao_estoque::on_btn_novo_produto_clicked()
 
 }
 
-
 void pg_gestao_estoque::on_btn_salvar_clicked()
 {
-    //QString ;
-    QDebug() << "Botão de Salvar";
+    if(!con.conectar())
+    {
+        QMessageBox::warning(this,"Falha na Conexão","Banco de Dados inacessível");
+    }
+    else{
+        // declaração das variáveis para query
+        QString aux_compra;
+        QString aux_venda;
+        QString codigo = ui->campo_codigo->text();
+        QString descricao = ui->campo_descricao->text();
+        QString fornecedor = ui->campo_fornecedor->text();
+        QString quantidade = ui->campo_quantidade->text();
+
+        // alteração de , por . caso seja digitado , no decimal
+        aux_compra = ui->campo_valor_compra->text();
+        std::replace(aux_compra.begin(),aux_compra.end(),',','.');
+
+        aux_venda = ui->campo_valor_venda->text();
+        std::replace(aux_venda.begin(),aux_venda.end(),',','.');
+
+        QString valor_compra = aux_compra;
+        QString valor_venda = aux_venda;
+
+        // query para inserção dos dados no DB
+        QSqlQuery query;
+        query.prepare("INSERT INTO tb_produtos "
+                      "(id_produto, produto, id_fornecedor, qtde_estoque, valor_compra, valor_venda) VALUES"
+                      "("+QString::number(codigo.toInt())+", '"+descricao+"',"
+                        ""+QString::number(fornecedor.toInt())+", "+QString::number(quantidade.toInt())+", "
+                        ""+QString::number(valor_compra.toFloat())+", "+QString::number(valor_venda.toFloat())+")");
+        if(!query.exec())
+        {
+            QMessageBox::warning(this,"Falha no Cadastro", "Produto não cadastrado");
+        }
+        else{
+            QMessageBox::information(this,"Cadastro Realizado", "Produto cadastrado");
+            pg_gestao_estoque::on_btn_novo_produto_clicked();
+        }
+    }
 }
 

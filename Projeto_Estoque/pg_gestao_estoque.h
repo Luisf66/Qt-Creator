@@ -2,6 +2,9 @@
 #define PG_GESTAO_ESTOQUE_H
 
 #include <QDialog>
+#include "Conexao.h"
+#include <QMessageBox>
+#include <QtSql>
 
 namespace Ui {
 class pg_gestao_estoque;
@@ -14,6 +17,7 @@ class pg_gestao_estoque : public QDialog
 public:
     explicit pg_gestao_estoque(QWidget *parent = nullptr);
     ~pg_gestao_estoque();
+    Conexao con;
 
 private slots:
     void on_btn_novo_produto_clicked();
