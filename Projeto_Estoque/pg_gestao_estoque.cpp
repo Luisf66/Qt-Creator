@@ -86,6 +86,8 @@ void pg_gestao_estoque::on_tabWidget_currentChanged(int index)
 {
     if(index == 1)
     {
+        // Limpar a tabela caso já exista algo
+        Remover_Linhas(ui->tw_produtos);
         // guardar todas as linhas
         int nlinhas = 0;
         // query para buscar produto pelo id
@@ -111,7 +113,7 @@ void pg_gestao_estoque::on_tabWidget_currentChanged(int index)
             QStringList cabecalho = {"Código", "Produto"};
             ui->tw_produtos->setHorizontalHeaderLabels(cabecalho);
             // estilização
-            ui->tw_produtos->setStyleSheet("QTableView {selection-background-color: green}");
+            ui->tw_produtos->setStyleSheet("QTableView {selection-background-color:red}");
             ui->tw_produtos->setEditTriggers(QAbstractItemView::NoEditTriggers);
             ui->tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
             ui->tw_produtos->verticalHeader()->setVisible(false);
@@ -119,6 +121,33 @@ void pg_gestao_estoque::on_tabWidget_currentChanged(int index)
         else{
             QMessageBox::warning(this,"Falha na Busca","Busca não realizada");
         }
+    }
+}
+
+void pg_gestao_estoque::Remover_Linhas(QTableWidget *tw)
+{
+    while(tw->rowCount() > 0)
+    {
+        tw->removeRow(0);
+    }
+}
+
+void pg_gestao_estoque::on_tw_produtos_itemSelectionChanged()
+{
+    // atribuir o id de acordo com o selecionado
+    int id = ui->tw_produtos->item(ui->tw_produtos->currentRow(),0)->text().toInt();
+    QSqlQuery query;
+    query.prepare("SELECT * FROM tb_produtos WHERE id_produto="+QString::number(id));
+    if(query.exec())
+    {
+        // preencher os campos de acordo com o retorno da busca
+        query.first();
+        ui->campo_codigo2->setText(query.value(0).toString());
+        ui->campo_produto2->setText(query.value(1).toString());
+        ui->campo_fornecedor2->setText(query.value(2).toString());
+        ui->campo_quantidade2->setText(query.value(3).toString());
+        ui->campo_valor_compra2->setText(query.value(4).toString());
+        ui->campo_valor_venda2->setText(query.value(5).toString());
     }
 }
 

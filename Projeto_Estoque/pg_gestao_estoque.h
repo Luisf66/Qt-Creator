@@ -5,6 +5,7 @@
 #include "Conexao.h"
 #include <QMessageBox>
 #include <QtSql>
+#include <QTableWidget>
 
 namespace Ui {
 class pg_gestao_estoque;
@@ -18,6 +19,7 @@ public:
     explicit pg_gestao_estoque(QWidget *parent = nullptr);
     ~pg_gestao_estoque();
     Conexao con;
+    void Remover_Linhas(QTableWidget *tw);
 
 private slots:
     void on_btn_novo_produto_clicked();
@@ -25,6 +27,8 @@ private slots:
     void on_btn_salvar_clicked();
 
     void on_tabWidget_currentChanged(int index);
+
+    void on_tw_produtos_itemSelectionChanged();
 
 private:
     Ui::pg_gestao_estoque *ui;
