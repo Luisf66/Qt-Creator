@@ -15,12 +15,13 @@ pg_gestao_estoque::pg_gestao_estoque(QWidget *parent)
         query.prepare("SELECT * FROM tb_produtos");
         if(query.exec())
         {
-            qDebug() << "Busca realizada";
+
         }
         else{
             QMessageBox::warning(this,"Falha na Busca","Busca não realizada");
         }
     }
+    ui->tw_produtos->setColumnCount(2);
 }
 
 pg_gestao_estoque::~pg_gestao_estoque()
@@ -77,6 +78,47 @@ void pg_gestao_estoque::on_btn_salvar_clicked()
     else{
         QMessageBox::information(this,"Cadastro Realizado", "Produto cadastrado");
         pg_gestao_estoque::on_btn_novo_produto_clicked();
+    }
+}
+
+
+void pg_gestao_estoque::on_tabWidget_currentChanged(int index)
+{
+    if(index == 1)
+    {
+        // guardar todas as linhas
+        int nlinhas = 0;
+        // query para buscar produto pelo id
+        QSqlQuery query;
+        query.prepare("SELECT id_produto, produto FROM tb_produtos ORDER BY produto");
+        if(query.exec())
+        {
+            // repetição enquanto houver proximo elemento
+            while(query.next())
+            {
+                // inserção das linhas na tabela
+                ui->tw_produtos->insertRow(nlinhas);
+                // definição do elemento para inserção
+                ui->tw_produtos->setItem(nlinhas,0,new QTableWidgetItem(query.value(0).toString()));
+                ui->tw_produtos->setItem(nlinhas,1,new QTableWidgetItem(query.value(1).toString()));
+                ui->tw_produtos->setRowHeight(nlinhas,20);
+                nlinhas++;
+            }
+            // definição do tamanho das linhas 0 e 1
+            ui->tw_produtos->setColumnWidth(0,150);
+            ui->tw_produtos->setColumnWidth(1,230);
+            // cabeçalho das colunas
+            QStringList cabecalho = {"Código", "Produto"};
+            ui->tw_produtos->setHorizontalHeaderLabels(cabecalho);
+            // estilização
+            ui->tw_produtos->setStyleSheet("QTableView {selection-background-color: green}");
+            ui->tw_produtos->setEditTriggers(QAbstractItemView::NoEditTriggers);
+            ui->tw_produtos->setSelectionBehavior(QAbstractItemView::SelectRows);
+            ui->tw_produtos->verticalHeader()->setVisible(false);
+        }
+        else{
+            QMessageBox::warning(this,"Falha na Busca","Busca não realizada");
+        }
     }
 }
 

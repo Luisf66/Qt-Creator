@@ -24,6 +24,8 @@ private slots:
 
     void on_btn_salvar_clicked();
 
+    void on_tabWidget_currentChanged(int index);
+
 private:
     Ui::pg_gestao_estoque *ui;
 };
