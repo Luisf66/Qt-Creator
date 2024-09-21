@@ -34,6 +34,8 @@ private slots:
 
     void on_btn_excluir_clicked();
 
+    void on_btn_pesquisar_clicked();
+
 private:
     Ui::pg_gestao_estoque *ui;
 };

@@ -197,19 +197,23 @@ void pg_gestao_estoque::on_btn_salvar2_clicked()
 
 void pg_gestao_estoque::on_btn_excluir_clicked()
 {
+    // verifica se há algo selecionado
     if(ui->campo_codigo2->text() == ""){
         QMessageBox::warning(this,"Falha na Exclusão", "Nenhum produto selecionado");
     }
     else{
+        // confirma a exclusão do produto
         QMessageBox::StandardButton opcao = QMessageBox::question(this,"Deletar Produto","Você realmente deseja excluir o produto?",QMessageBox::Yes|QMessageBox::No);
         if(opcao == QMessageBox::Yes)
         {
+            // obtem a linha do produto selecionado
             int linha = ui->tw_produtos->currentRow();
             int id = ui->tw_produtos->item(linha,0)->text().toInt();
             QSqlQuery query;
             query.prepare("DELETE FROM tb_produtos WHERE id_produto="+QString::number(id));
             if(query.exec())
             {
+                // deleta a linha selecionada
                 ui->tw_produtos->removeRow(linha);
                 QMessageBox::information(this,"Produto Deletado","Produto foi deletado com sucesso");
             }
@@ -218,6 +222,50 @@ void pg_gestao_estoque::on_btn_excluir_clicked()
             }
 
         }
+    }
+}
+
+
+void pg_gestao_estoque::on_btn_pesquisar_clicked()
+{
+    QString busca;
+    Remover_Linhas(ui->tw_produtos);
+    if(ui->campo_pesquisar->text() == ""){
+        if(ui->filtro_cod_produto->isChecked())
+        {
+            busca = "SELECT id_produto, produto FROM tb_produtos ORDER BY id_produto";
+        }
+        else{
+            busca = "SELECT id_produto, produto FROM tb_produtos ORDER by produto";
+        }
+    }
+    else{
+        if(ui->filtro_cod_produto->isChecked())
+        {
+            busca = "SELECT id_produto, produto FROM tb_produtos WHERE id_produto="+ui->campo_pesquisar->text()+" ORDER BY id_produto";
+        }
+        else{
+            busca = "SELECT id_produto, produto FROM tb_produtos WHERE produto LIKE '%"+ui->campo_pesquisar->text()+"%' ORDER BY produto";
+        }
+    }
+    int nlinhas = 0;
+    QSqlQuery query;
+    query.prepare(busca);
+    if(query.exec())
+    {
+        while(query.next())
+        {
+            // inserção das linhas na tabela
+            ui->tw_produtos->insertRow(nlinhas);
+            // definição do elemento para inserção
+            ui->tw_produtos->setItem(nlinhas,0,new QTableWidgetItem(query.value(0).toString()));
+            ui->tw_produtos->setItem(nlinhas,1,new QTableWidgetItem(query.value(1).toString()));
+            ui->tw_produtos->setRowHeight(nlinhas,20);
+            nlinhas++;
+        }
+    }
+    else{
+        QMessageBox::warning(this,"Falha na Busca", "Não foi possível filtrar os produtos");
     }
 }
 
