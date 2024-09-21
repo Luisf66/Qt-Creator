@@ -194,3 +194,30 @@ void pg_gestao_estoque::on_btn_salvar2_clicked()
 
 }
 
+
+void pg_gestao_estoque::on_btn_excluir_clicked()
+{
+    if(ui->campo_codigo2->text() == ""){
+        QMessageBox::warning(this,"Falha na Exclusão", "Nenhum produto selecionado");
+    }
+    else{
+        QMessageBox::StandardButton opcao = QMessageBox::question(this,"Deletar Produto","Você realmente deseja excluir o produto?",QMessageBox::Yes|QMessageBox::No);
+        if(opcao == QMessageBox::Yes)
+        {
+            int linha = ui->tw_produtos->currentRow();
+            int id = ui->tw_produtos->item(linha,0)->text().toInt();
+            QSqlQuery query;
+            query.prepare("DELETE FROM tb_produtos WHERE id_produto="+QString::number(id));
+            if(query.exec())
+            {
+                ui->tw_produtos->removeRow(linha);
+                QMessageBox::information(this,"Produto Deletado","Produto foi deletado com sucesso");
+            }
+            else{
+                QMessageBox::warning(this,"Falha na Exclusão", "O produto não foi removidos");
+            }
+
+        }
+    }
+}
+
