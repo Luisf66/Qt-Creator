@@ -30,6 +30,8 @@ private slots:
 
     void on_tw_produtos_itemSelectionChanged();
 
+    void on_btn_salvar2_clicked();
+
 private:
     Ui::pg_gestao_estoque *ui;
 };
