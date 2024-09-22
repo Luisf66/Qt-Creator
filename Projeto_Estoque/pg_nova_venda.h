@@ -17,6 +17,10 @@ public:
     explicit pg_nova_venda(QWidget *parent = nullptr);
     ~pg_nova_venda();
     Conexao con;
+    int nlinhas;
+
+private slots:
+    void on_campo_cod_produto_returnPressed();
 
 private:
     Ui::pg_nova_venda *ui;
