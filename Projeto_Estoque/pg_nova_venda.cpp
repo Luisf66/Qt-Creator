@@ -1,6 +1,7 @@
 #include "pg_nova_venda.h"
 #include "ui_pg_nova_venda.h"
 
+
 pg_nova_venda::pg_nova_venda(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::pg_nova_venda)
@@ -72,12 +73,28 @@ void pg_nova_venda::on_campo_cod_produto_returnPressed()
             ui->tw_listar_produtos->setRowHeight(nlinhas,20);
             nlinhas++;
 
-            ui->campo_cod_produto->clear();
-            ui->campo_quantidade->setText("1");
+            ui->cifra->setText("R$ "+ QString::number(Calcula_Total(ui->tw_listar_produtos,4)));
         }
         else{
             QMessageBox::warning(this,"Falha na Busca", "Produto não encontrado");
         }
+        Limpar_campos();
     }
 }
 
+void pg_nova_venda::Limpar_campos(){
+    ui->campo_cod_produto->clear();
+    ui->campo_quantidade->setText("1");
+    ui->campo_cod_produto->setFocus();
+}
+
+double pg_nova_venda::Calcula_Total(QTableWidget *tw, int coluna){
+    int total_linhas = 0;
+    double total_venda = 0.0;
+
+    total_linhas = ui->tw_listar_produtos->rowCount();
+    for(int i = 0; i < total_linhas; i++){
+        total_venda +=  tw->item(i,coluna)->text().toDouble();
+    }
+    return total_venda;
+}

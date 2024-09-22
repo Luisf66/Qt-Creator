@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include "Conexao.h"
+#include <QTableWidget>
 
 namespace Ui {
 class pg_nova_venda;
@@ -16,6 +17,9 @@ class pg_nova_venda : public QDialog
 public:
     explicit pg_nova_venda(QWidget *parent = nullptr);
     ~pg_nova_venda();
+    void Limpar_campos();
+    double Calcula_Total(QTableWidget *tw, int coluna);
+
     Conexao con;
     int nlinhas;
 
