@@ -6,13 +6,153 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>691</width>
-    <height>561</height>
+    <width>1131</width>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QLabel" name="quantidade">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>70</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quantidade</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cod_produto">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Código do Produto</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="valor_total">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>110</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Valor Total:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cifra">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>110</y>
+     <width>21</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R$</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="campo_quantidade">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>70</y>
+     <width>113</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="campo_cod_produto">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>30</y>
+     <width>261</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_pesquisar_produto">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>70</y>
+     <width>135</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pesquisar Produto</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_excluir_produto">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>150</y>
+     <width>135</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Excluir Produto</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_editar_venda">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>110</y>
+     <width>135</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Editar Produto</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_finalizar_venda">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>135</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Finalizar Venda</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tw_listar_produtos">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>200</y>
+     <width>1111</width>
+     <height>461</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
