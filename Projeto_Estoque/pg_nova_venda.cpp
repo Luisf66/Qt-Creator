@@ -98,3 +98,21 @@ double pg_nova_venda::Calcula_Total(QTableWidget *tw, int coluna){
     }
     return total_venda;
 }
+
+void pg_nova_venda::on_btn_excluir_produto_clicked()
+{
+    if(ui->tw_listar_produtos->currentColumn() != -1)
+    {
+        QMessageBox::StandardButton opcao = QMessageBox::question(this,"O produto selecionado será removido da venda","Prosseguir ?",QMessageBox::Yes|QMessageBox::No);
+        if(opcao == QMessageBox::Yes)
+        {
+            ui->tw_listar_produtos->removeRow(ui->tw_listar_produtos->currentRow());
+            ui->cifra->setText("R$ "+ QString::number(Calcula_Total(ui->tw_listar_produtos,4)));
+            nlinhas--;
+        }
+    }
+    else{
+        QMessageBox::warning(this,"Falha na operação", "Nenhum produto foi selecionado");
+    }
+}
+

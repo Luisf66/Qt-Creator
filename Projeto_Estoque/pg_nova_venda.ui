@@ -103,6 +103,9 @@
    <property name="text">
     <string>Pesquisar Produto</string>
    </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="btn_excluir_produto">
    <property name="geometry">
@@ -115,6 +118,9 @@
    </property>
    <property name="text">
     <string>Excluir Produto</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_editar_venda">
@@ -129,6 +135,9 @@
    <property name="text">
     <string>Editar Produto</string>
    </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="btn_finalizar_venda">
    <property name="geometry">
@@ -141,6 +150,9 @@
    </property>
    <property name="text">
     <string>Finalizar Venda</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QTableWidget" name="tw_listar_produtos">

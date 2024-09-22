@@ -26,6 +26,8 @@ public:
 private slots:
     void on_campo_cod_produto_returnPressed();
 
+    void on_btn_excluir_produto_clicked();
+
 private:
     Ui::pg_nova_venda *ui;
 };
