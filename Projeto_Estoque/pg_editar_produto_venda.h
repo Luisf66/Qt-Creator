@@ -16,6 +16,11 @@ public:
     explicit pg_editar_produto_venda(QWidget *parent = nullptr);
     ~pg_editar_produto_venda();
 
+private slots:
+    void on_btn_confirmar_clicked();
+
+    void on_btn_cancelar_clicked();
+
 private:
     Ui::pg_editar_produto_venda *ui;
 };

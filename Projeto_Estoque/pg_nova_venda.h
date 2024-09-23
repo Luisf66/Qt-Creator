@@ -26,7 +26,8 @@ public:
     Conexao con;
     int nlinhas;
 
-    static QString g_id_prod, g_prod, g_qtde, g_val_total;
+    static QString g_id_prod, g_prod, g_qtde, g_val_total, g_val_unitario;
+    static bool edição;
 
 private slots:
     void on_campo_cod_produto_returnPressed();

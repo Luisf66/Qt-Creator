@@ -5,6 +5,9 @@ QString pg_nova_venda::g_id_prod;
 QString pg_nova_venda::g_prod;
 QString pg_nova_venda::g_qtde;
 QString pg_nova_venda::g_val_total;
+QString pg_nova_venda::g_val_unitario;
+
+bool pg_nova_venda::edição;
 
 pg_nova_venda::pg_nova_venda(QWidget *parent)
     : QDialog(parent)
@@ -128,13 +131,19 @@ void pg_nova_venda::on_btn_editar_venda_clicked()
 
         g_id_prod = ui->tw_listar_produtos->item(linha,0)->text();
         g_prod = ui->tw_listar_produtos->item(linha,1)->text();
-        g_qtde = ui->tw_listar_produtos->item(linha,2)->text();
-        g_val_total = ui->tw_listar_produtos->item(linha,3)->text();
+        g_val_total = ui->tw_listar_produtos->item(linha,2)->text();
+        g_qtde = ui->tw_listar_produtos->item(linha,3)->text();
 
         pg_editar_produto_venda editar_venda;
         editar_venda.exec();
 
-
+        if(edição)
+        {
+            ui->tw_listar_produtos->item(linha,2)->setText(g_val_unitario);
+            ui->tw_listar_produtos->item(linha,3)->setText(g_qtde);
+            ui->tw_listar_produtos->item(linha,4)->setText(g_val_total);
+            ui->cifra->setText("R$ "+ QString::number(Calcula_Total(ui->tw_listar_produtos,4)));
+        }
     }
 }
 
