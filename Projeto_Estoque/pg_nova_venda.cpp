@@ -1,6 +1,10 @@
 #include "pg_nova_venda.h"
 #include "ui_pg_nova_venda.h"
 
+QString pg_nova_venda::g_id_prod;
+QString pg_nova_venda::g_prod;
+QString pg_nova_venda::g_qtde;
+QString pg_nova_venda::g_val_total;
 
 pg_nova_venda::pg_nova_venda(QWidget *parent)
     : QDialog(parent)
@@ -113,6 +117,24 @@ void pg_nova_venda::on_btn_excluir_produto_clicked()
     }
     else{
         QMessageBox::warning(this,"Falha na operação", "Nenhum produto foi selecionado");
+    }
+}
+
+
+void pg_nova_venda::on_btn_editar_venda_clicked()
+{
+    if(ui->tw_listar_produtos->currentColumn() != -1){
+        int linha = ui->tw_listar_produtos->currentRow();
+
+        g_id_prod = ui->tw_listar_produtos->item(linha,0)->text();
+        g_prod = ui->tw_listar_produtos->item(linha,1)->text();
+        g_qtde = ui->tw_listar_produtos->item(linha,2)->text();
+        g_val_total = ui->tw_listar_produtos->item(linha,3)->text();
+
+        pg_editar_produto_venda editar_venda;
+        editar_venda.exec();
+
+
     }
 }
 

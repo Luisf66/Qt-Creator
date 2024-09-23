@@ -3,8 +3,11 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include "Conexao.h"
 #include <QTableWidget>
+
+
+#include "Conexao.h"
+#include "pg_editar_produto_venda.h"
 
 namespace Ui {
 class pg_nova_venda;
@@ -23,10 +26,14 @@ public:
     Conexao con;
     int nlinhas;
 
+    static QString g_id_prod, g_prod, g_qtde, g_val_total;
+
 private slots:
     void on_campo_cod_produto_returnPressed();
 
     void on_btn_excluir_produto_clicked();
+
+    void on_btn_editar_venda_clicked();
 
 private:
     Ui::pg_nova_venda *ui;
