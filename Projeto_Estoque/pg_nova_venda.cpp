@@ -1,6 +1,8 @@
 #include "pg_nova_venda.h"
 #include "ui_pg_nova_venda.h"
 
+#include <QDebug>
+
 QString pg_nova_venda::g_id_prod;
 QString pg_nova_venda::g_prod;
 QString pg_nova_venda::g_qtde;
@@ -95,6 +97,13 @@ void pg_nova_venda::Limpar_campos(){
     ui->campo_cod_produto->setFocus();
 }
 
+void pg_nova_venda::Remover_linhas(QTableWidget *tw){
+    while(tw->rowCount() > 0)
+    {
+        tw->removeRow(0);
+    }
+}
+
 double pg_nova_venda::Calcula_Total(QTableWidget *tw, int coluna){
     int total_linhas = 0;
     double total_venda = 0.0;
@@ -144,6 +153,40 @@ void pg_nova_venda::on_btn_editar_venda_clicked()
             ui->tw_listar_produtos->item(linha,4)->setText(g_val_total);
             ui->cifra->setText("R$ "+ QString::number(Calcula_Total(ui->tw_listar_produtos,4)));
         }
+    }
+}
+
+
+void pg_nova_venda::on_btn_finalizar_venda_clicked()
+{
+    if(ui->tw_listar_produtos->rowCount() > 0)
+    {
+        int id_venda = 0;
+        QString msg_fim_venda;
+        double total = Calcula_Total(ui->tw_listar_produtos,4);
+        QString data = QDate::currentDate().toString("yyyy-mm-dd");
+        QString hora = QTime::currentTime().toString("hh:mm:ss");
+        QSqlQuery query;
+        query.prepare("INSERT INTO tb_vendas (data_venda, hora_venda, id_colaborador, valor_total) "
+        "VALUES ('"+data+"', '"+hora+"', "+QString::number(pg_principal::id_colab)+", "+QString::number(total)+")");
+        if(!query.exec())
+        {
+            QMessageBox::warning(this,"Falha na Venda", "Erro ao registrar venda");
+        }
+        else{
+            query.prepare("SELECT id_venda FROM tb_vendas ORDER BY id_venda DESC LIMIT 1");
+            query.exec();
+            query.first();
+            id_venda = query.value(0).toInt();
+            msg_fim_venda = "ID venda: " + QString::number(id_venda)+ "\nValor Total: R$ " + QString::number(total);
+            QMessageBox::information(this,"Venda Finalizada", msg_fim_venda);
+            Limpar_campos();
+            Remover_linhas(ui->tw_listar_produtos);
+            ui->cifra->setText("R$ 0.00");
+        }
+    }
+    else{
+        QMessageBox::warning(this,"Falha na Venda", "Não há produtos na lista");
     }
 }
 

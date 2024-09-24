@@ -18,7 +18,7 @@
     <rect>
      <x>30</x>
      <y>28</y>
-     <width>425</width>
+     <width>451</width>
      <height>109</height>
     </rect>
    </property>
@@ -35,7 +35,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="campo_username"/>
+         <widget class="QLineEdit" name="campo_username">
+          <property name="text">
+           <string>Luisf3112</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -50,6 +54,9 @@
         </item>
         <item>
          <widget class="QLineEdit" name="campo_senha">
+          <property name="text">
+           <string>teste123</string>
+          </property>
           <property name="echoMode">
            <enum>QLineEdit::EchoMode::Password</enum>
           </property>
