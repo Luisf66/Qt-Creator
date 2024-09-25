@@ -167,8 +167,8 @@ void pg_nova_venda::on_btn_finalizar_venda_clicked()
         QString data = QDate::currentDate().toString("yyyy-mm-dd");
         QString hora = QTime::currentTime().toString("hh:mm:ss");
         QSqlQuery query;
-        query.prepare("INSERT INTO tb_vendas (data_venda, hora_venda, id_colaborador, valor_total) "
-        "VALUES ('"+data+"', '"+hora+"', "+QString::number(pg_principal::id_colab)+", "+QString::number(total)+")");
+        query.prepare("INSERT INTO tb_vendas (data_venda, hora_venda, id_colaborador, valor_total, id_tipo_pagamento) "
+        "VALUES ('"+data+"', '"+hora+"', "+QString::number(pg_principal::id_colab)+", "+QString::number(total)+", 1)");
         if(!query.exec())
         {
             QMessageBox::warning(this,"Falha na Venda", "Erro ao registrar venda");
@@ -179,6 +179,27 @@ void pg_nova_venda::on_btn_finalizar_venda_clicked()
             query.first();
             id_venda = query.value(0).toInt();
             msg_fim_venda = "ID venda: " + QString::number(id_venda)+ "\nValor Total: R$ " + QString::number(total);
+
+            int total_linhas = ui->tw_listar_produtos->rowCount();
+            int linha_atual = 0;
+            while(linha_atual < total_linhas)
+            {
+                QString produto = ui->tw_listar_produtos->item(linha_atual,1)->text();
+                QString qtde = ui->tw_listar_produtos->item(linha_atual,3)->text();
+                QString valor_uni = ui->tw_listar_produtos->item(linha_atual,2)->text();
+                QString valor_tot = ui->tw_listar_produtos->item(linha_atual,4)->text();
+
+                query.prepare("INSERT INTO tb_produtosVendas (id_venda, produto, qtde, valor_un, valor_total) VALUES "
+                              "("+QString::number(id_venda)+", '"+produto+"', "+qtde+", "+valor_uni+", "+valor_tot+")");
+                if(query.exec())
+                {
+                    linha_atual++;
+                }
+                else{
+                    QMessageBox::warning(this,"Falha na Inserção", "Os dados não foram inseridos na produtosVendas");
+                }
+            }
+
             QMessageBox::information(this,"Venda Finalizada", msg_fim_venda);
             Limpar_campos();
             Remover_linhas(ui->tw_listar_produtos);
