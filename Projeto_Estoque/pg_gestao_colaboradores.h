@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include "Conexao.h"
+
 namespace Ui {
 class pg_gestao_colaboradores;
 }
@@ -14,6 +16,12 @@ class pg_gestao_colaboradores : public QDialog
 public:
     explicit pg_gestao_colaboradores(QWidget *parent = nullptr);
     ~pg_gestao_colaboradores();
+    Conexao con;
+
+private slots:
+    void on_btn_salvar_novo_clicked();
+
+    void on_btn_cancelar_novo_clicked();
 
 private:
     Ui::pg_gestao_colaboradores *ui;
