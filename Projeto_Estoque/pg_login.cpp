@@ -30,10 +30,10 @@ void pg_login::on_btn_login_clicked()
             query.first();
             if(query.value(1).toString() != "")
             {
-                pg_principal::logado = true;
-                pg_principal::nome_colab = query.value(1).toString();
-                pg_principal::id_colab = query.value(0).toInt();
-                pg_principal::acesso_colab = query.value(5).toString();
+                variaveis_globais::logado = true;
+                variaveis_globais::nome_colab = query.value(1).toString();
+                variaveis_globais::id_colab = query.value(0).toInt();
+                variaveis_globais::acesso_colab = query.value(5).toString();
 
                 con.desconectar();
                 close();

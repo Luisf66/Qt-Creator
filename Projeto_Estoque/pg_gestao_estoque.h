@@ -7,6 +7,8 @@
 #include <QtSql>
 #include <QTableWidget>
 
+#include "funcoes_globais.h"
+
 namespace Ui {
 class pg_gestao_estoque;
 }
@@ -19,7 +21,7 @@ public:
     explicit pg_gestao_estoque(QWidget *parent = nullptr);
     ~pg_gestao_estoque();
     Conexao con;
-    void Remover_Linhas(QTableWidget *tw);
+
 
 private slots:
     void on_btn_novo_produto_clicked();

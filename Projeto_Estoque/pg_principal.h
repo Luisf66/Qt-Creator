@@ -27,9 +27,6 @@ public:
     ~pg_principal();
     QIcon cadFechado;
     QIcon cadAberto;
-    static bool logado;
-    static QString nome_colab, acesso_colab, username_colab;
-    static int id_colab;
 
 private slots:
     void on_btn_bloquear_clicked();

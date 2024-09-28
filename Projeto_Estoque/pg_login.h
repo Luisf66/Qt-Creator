@@ -6,7 +6,7 @@
 
 #include "Conexao.h"
 #include "pg_principal.h"
-
+#include "variaveis_globais.h"
 namespace Ui {
 class pg_login;
 }

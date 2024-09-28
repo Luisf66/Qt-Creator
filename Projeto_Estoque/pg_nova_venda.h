@@ -9,6 +9,7 @@
 #include "Conexao.h"
 #include "pg_editar_produto_venda.h"
 #include "pg_principal.h"
+#include "variaveis_globais.h"
 
 namespace Ui {
 class pg_nova_venda;

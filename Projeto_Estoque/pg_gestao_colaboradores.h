@@ -2,6 +2,7 @@
 #define PG_GESTAO_COLABORADORES_H
 
 #include <QDialog>
+#include <QtSql>
 
 #include "Conexao.h"
 
@@ -22,6 +23,8 @@ private slots:
     void on_btn_salvar_novo_clicked();
 
     void on_btn_cancelar_novo_clicked();
+
+    void on_tabWidget_currentChanged(int index);
 
 private:
     Ui::pg_gestao_colaboradores *ui;

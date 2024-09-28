@@ -168,7 +168,7 @@ void pg_nova_venda::on_btn_finalizar_venda_clicked()
         QString hora = QTime::currentTime().toString("hh:mm:ss");
         QSqlQuery query;
         query.prepare("INSERT INTO tb_vendas (data_venda, hora_venda, id_colaborador, valor_total, id_tipo_pagamento) "
-        "VALUES ('"+data+"', '"+hora+"', "+QString::number(pg_principal::id_colab)+", "+QString::number(total)+", 1)");
+        "VALUES ('"+data+"', '"+hora+"', "+QString::number(variaveis_globais::id_colab)+", "+QString::number(total)+", 1)");
         if(!query.exec())
         {
             QMessageBox::warning(this,"Falha na Venda", "Erro ao registrar venda");

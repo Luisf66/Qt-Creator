@@ -88,7 +88,7 @@ void pg_gestao_estoque::on_tabWidget_currentChanged(int index)
     if(index == 1)
     {
         // Limpar a tabela caso já exista algo
-        Remover_Linhas(ui->tw_produtos);
+        funcoes_globais::Remover_Linhas(ui->tw_produtos);
         // guardar todas as linhas
         int nlinhas = 0;
         // query para buscar produto pelo id
@@ -122,14 +122,6 @@ void pg_gestao_estoque::on_tabWidget_currentChanged(int index)
         else{
             QMessageBox::warning(this,"Falha na Busca","Busca não realizada");
         }
-    }
-}
-
-void pg_gestao_estoque::Remover_Linhas(QTableWidget *tw)
-{
-    while(tw->rowCount() > 0)
-    {
-        tw->removeRow(0);
     }
 }
 
@@ -229,7 +221,7 @@ void pg_gestao_estoque::on_btn_excluir_clicked()
 void pg_gestao_estoque::on_btn_pesquisar_clicked()
 {
     QString busca;
-    Remover_Linhas(ui->tw_produtos);
+    funcoes_globais::Remover_Linhas(ui->tw_produtos);
     if(ui->campo_pesquisar->text() == ""){
         if(ui->filtro_cod_produto->isChecked())
         {

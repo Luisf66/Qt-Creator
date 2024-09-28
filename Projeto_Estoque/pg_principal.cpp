@@ -1,11 +1,12 @@
 #include "pg_principal.h"
 #include "./ui_pg_principal.h"
+#include "variaveis_globais.h"
 
-int pg_principal::id_colab;
-QString pg_principal::nome_colab;
-QString pg_principal::acesso_colab;
-QString pg_principal::username_colab;
-bool pg_principal::logado;
+int variaveis_globais::id_colab;
+QString variaveis_globais::nome_colab;
+QString variaveis_globais::acesso_colab;
+QString variaveis_globais::username_colab;
+bool variaveis_globais::logado;
 
 pg_principal::pg_principal(QWidget *parent)
     : QMainWindow(parent)
@@ -13,7 +14,7 @@ pg_principal::pg_principal(QWidget *parent)
 {
     ui->setupUi(this);
 
-    logado = false;
+    variaveis_globais::logado = false;
     cadFechado.addFile(":/imagens/img/simbolo-bloqueado.png"); // importarção das imagens
     cadAberto.addFile(":/imagens/img/valido.png");
 
@@ -30,18 +31,18 @@ pg_principal::~pg_principal()
 
 void pg_principal::on_btn_bloquear_clicked()
 {
-    if(!logado)
+    if(!variaveis_globais::logado)
     {
         pg_login logar;
         logar.exec(); // abertura da pagina de login
-        if(logado)
+        if(variaveis_globais::logado)
         {
             ui->btn_bloquear->setIcon(cadAberto);
-            ui->nome_colab->setText(nome_colab);
+            ui->nome_colab->setText(variaveis_globais::nome_colab);
         }
     }
     else{
-        logado = false;
+        variaveis_globais::logado = false;
         ui->btn_bloquear->setIcon(cadAberto); // colocar icone Y no botão
         ui->nome_colab->setText("Sem Colaborador");
     }
@@ -50,7 +51,7 @@ void pg_principal::on_btn_bloquear_clicked()
 
 void pg_principal::on_btn_nova_venda_clicked()
 {
-    if(logado)
+    if(variaveis_globais::logado)
     {
         pg_nova_venda nova_venda;
         nova_venda.exec();
@@ -64,9 +65,9 @@ void pg_principal::on_btn_nova_venda_clicked()
 void pg_principal::on_actionEstoque_triggered()
 {
     // logica de acesso para estoque
-    if(logado)
+    if(variaveis_globais::logado)
     {
-        if(acesso_colab == "A")
+        if(variaveis_globais::acesso_colab == "A")
         {
             pg_gestao_estoque gestao_estoque;
             gestao_estoque.exec();
@@ -84,9 +85,9 @@ void pg_principal::on_actionEstoque_triggered()
 void pg_principal::on_actionColaboradores_triggered()
 {
     // logica de acesso para colaboradores
-    if(logado)
+    if(variaveis_globais::logado)
     {
-        if(acesso_colab == "A")
+        if(variaveis_globais::acesso_colab == "A")
         {
             pg_gestao_colaboradores gestao_colaboradores;
             gestao_colaboradores.exec();
@@ -104,9 +105,9 @@ void pg_principal::on_actionColaboradores_triggered()
 void pg_principal::on_actionVendas_triggered()
 {
     // logica de acesso para vendas
-    if(logado)
+    if(variaveis_globais::logado)
     {
-        if(acesso_colab == "A")
+        if(variaveis_globais::acesso_colab == "A")
         {
             pg_gestao_vendas gestao_vendas;
             gestao_vendas.exec();
