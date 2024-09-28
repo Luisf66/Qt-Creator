@@ -97,7 +97,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="campo_senha_novo"/>
+         <widget class="QLineEdit" name="campo_senha_novo">
+          <property name="echoMode">
+           <enum>QLineEdit::EchoMode::Normal</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -200,7 +204,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -268,7 +272,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -301,7 +305,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>270</x>
@@ -330,7 +334,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>410</x>

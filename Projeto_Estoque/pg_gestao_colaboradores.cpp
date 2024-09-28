@@ -43,12 +43,37 @@ pg_gestao_colaboradores::~pg_gestao_colaboradores()
 void pg_gestao_colaboradores::on_btn_salvar_novo_clicked()
 {
     ui->tipo_acesso->setCurrentIndex(0);
+
+    QString nome = ui->campo_nome_novo->text();
+    QString username = ui->campo_usuario_novo->text();
+    QString senha = ui->campo_senha_novo->text();
+    QString telefone = ui->campo_telefone_novo->text();
+    QString acesso = ui->tipo_acesso->currentText();
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO tb_colaboradores (nome_colab, username_colab, senha_colab, fone_colab, acesso_colab)"
+                  " VALUES ('"+nome+"', '"+username+"', '"+senha+"', '"+telefone+"', '"+acesso+"')");
+    if(query.exec())
+    {
+        QMessageBox::information(this, "Cadastro Efetuado", "Dados dos Colaboradores foram salvos");
+        // limpar os campos
+        ui->campo_nome_novo->clear();
+        ui->campo_usuario_novo->clear();
+        ui->campo_senha_novo->clear();
+        ui->campo_telefone_novo->clear();
+        ui->tipo_acesso->setCurrentIndex(0);
+        // apontar para o campo nome apos limpeza dos campos
+        ui->campo_nome_novo->setFocus();
+    }
+    else{
+        QMessageBox::critical(this,"Falha np Cadastro", "Os dados não foram salvos");
+    }
 }
 
 
 void pg_gestao_colaboradores::on_btn_cancelar_novo_clicked()
 {
-
+    close();
 }
 
 
