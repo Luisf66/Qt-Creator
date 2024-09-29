@@ -17,6 +17,8 @@ pg_gestao_colaboradores::pg_gestao_colaboradores(QWidget *parent)
 
     ui->tipo_acesso->addItem("A");
     ui->tipo_acesso->addItem("B");
+    ui->tipo_acesso_2->addItem("A");
+    ui->tipo_acesso_2->addItem("B");
     ui->campo_nome_novo->setFocus();
 
     ui->tabWidget->setCurrentIndex(0);
@@ -105,6 +107,25 @@ void pg_gestao_colaboradores::on_tabWidget_currentChanged(int index)
         else{
             QMessageBox::warning(this,"Falha na Busca","Erro ao listar colaboradores");
         }
+    }
+}
+
+
+void pg_gestao_colaboradores::on_tabela_gestao_colab_itemSelectionChanged()
+{
+    // atribuir o id de acordo com o selecionado
+    int id = ui->tabela_gestao_colab->item(ui->tabela_gestao_colab->currentRow(),0)->text().toInt();
+    QSqlQuery query;
+    query.prepare("SELECT * FROM tb_colaboradores WHERE id_colab="+QString::number(id));
+    if(query.exec())
+    {
+        // preencher os campos de acordo com o retorno da busca
+        query.first();
+        ui->campo_nome_gestao->setText(query.value(1).toString());
+        ui->campo_usuario_gestao->setText(query.value(2).toString());
+        ui->campo_senha_gestao->setText(query.value(3).toString());
+        ui->campo_telefone_gestao->setText(query.value(4).toString());
+        ui->tipo_acesso_2->setCurrentText(query.value(5).toString());
     }
 }
 

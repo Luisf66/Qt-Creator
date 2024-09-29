@@ -26,6 +26,8 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+    void on_tabela_gestao_colab_itemSelectionChanged();
+
 private:
     Ui::pg_gestao_colaboradores *ui;
 };
