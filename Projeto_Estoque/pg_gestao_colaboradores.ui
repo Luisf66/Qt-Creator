@@ -283,9 +283,9 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
-       <widget class="QPushButton" name="btn_editar_gestao">
+       <widget class="QPushButton" name="btn_salver_gestao">
         <property name="text">
-         <string>Editar</string>
+         <string>Salvar</string>
         </property>
        </widget>
       </item>

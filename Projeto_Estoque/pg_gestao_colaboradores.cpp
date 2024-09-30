@@ -129,3 +129,29 @@ void pg_gestao_colaboradores::on_tabela_gestao_colab_itemSelectionChanged()
     }
 }
 
+
+void pg_gestao_colaboradores::on_btn_salver_gestao_clicked()
+{
+    QString id = ui->tabela_gestao_colab->item(ui->tabela_gestao_colab->currentRow(),0)->text();
+    QString nome = ui->campo_nome_gestao->text();
+    QString username = ui->campo_usuario_gestao->text();
+    QString senha = ui->campo_senha_gestao->text();
+    QString telefone = ui->campo_telefone_gestao->text();
+    QString acesso = ui->tipo_acesso_2->currentText();
+
+    QSqlQuery query;
+    query.prepare("UPDATE tb_colaboradores SET nome_colab = '"+nome+"', username_colab = '"+username+"', "
+                "senha_colab = '"+senha+"', fone_colab = '"+telefone+"', acesso_colab = '"+acesso+"'"
+                "  where id_colab="+id);
+    if(query.exec())
+    {
+        int linha = ui->tabela_gestao_colab->currentRow();
+        ui->tabela_gestao_colab->item(linha,1)->setText(nome);
+
+        QMessageBox::information(this, "Atualização Realizada", "Dados do colaborador foram alterados");
+    }
+    else{
+        QMessageBox::warning(this,"Falha na Atualização", "Os dados não foram alterados");
+    }
+}
+
