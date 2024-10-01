@@ -2,6 +2,10 @@
 #define PG_GESTAO_VENDAS_H
 
 #include <QDialog>
+#include <QDebug>
+#include <QtSql>
+#include <QMessageBox>
+#include "Conexao.h"
 
 namespace Ui {
 class pg_gestao_vendas;
@@ -14,6 +18,7 @@ class pg_gestao_vendas : public QDialog
 public:
     explicit pg_gestao_vendas(QWidget *parent = nullptr);
     ~pg_gestao_vendas();
+    Conexao con;
 
 private:
     Ui::pg_gestao_vendas *ui;
