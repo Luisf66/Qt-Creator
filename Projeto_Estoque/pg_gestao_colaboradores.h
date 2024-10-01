@@ -5,6 +5,7 @@
 #include <QtSql>
 
 #include "Conexao.h"
+#include "funcoes_globais.h"
 
 namespace Ui {
 class pg_gestao_colaboradores;
@@ -29,6 +30,8 @@ private slots:
     void on_tabela_gestao_colab_itemSelectionChanged();
 
     void on_btn_salver_gestao_clicked();
+
+    void on_btn_excluir_gestao_clicked();
 
 private:
     Ui::pg_gestao_colaboradores *ui;

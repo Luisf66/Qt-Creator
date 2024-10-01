@@ -84,7 +84,7 @@ void pg_gestao_colaboradores::on_tabWidget_currentChanged(int index)
     if(index == 1)
     {
         // Limpar a tabela caso já exista algo
-        //Remover_Linhas(ui->tabela_gestao_colab);
+        funcoes_globais::Remover_Linhas(ui->tabela_gestao_colab);
         // guardar todas as linhas
         int nlinhas = 0;
         // query para buscar produto pelo id
@@ -132,6 +132,11 @@ void pg_gestao_colaboradores::on_tabela_gestao_colab_itemSelectionChanged()
 
 void pg_gestao_colaboradores::on_btn_salver_gestao_clicked()
 {
+    if(ui->tabela_gestao_colab->currentRow() == -1)
+    {
+        QMessageBox::warning(this,"Falha na Operação","Nenhum colaborador selecionado");
+        return;
+    }
     QString id = ui->tabela_gestao_colab->item(ui->tabela_gestao_colab->currentRow(),0)->text();
     QString nome = ui->campo_nome_gestao->text();
     QString username = ui->campo_usuario_gestao->text();
@@ -152,6 +157,37 @@ void pg_gestao_colaboradores::on_btn_salver_gestao_clicked()
     }
     else{
         QMessageBox::warning(this,"Falha na Atualização", "Os dados não foram alterados");
+    }
+}
+
+
+void pg_gestao_colaboradores::on_btn_excluir_gestao_clicked()
+{
+    // verifica se há algo selecionado
+    if(ui->tabela_gestao_colab->currentRow() == -1){
+        QMessageBox::warning(this,"Falha na Exclusão", "Nenhum colaborador selecionado");
+    }
+    else{
+        // confirma a exclusão do produto
+        QMessageBox::StandardButton opcao = QMessageBox::question(this,"Deletar Colaborador","Você realmente deseja excluir o colaborador?",QMessageBox::Yes|QMessageBox::No);
+        if(opcao == QMessageBox::Yes)
+        {
+            // obtem a linha do produto selecionado
+            int linha = ui->tabela_gestao_colab->currentRow();
+            QString id = ui->tabela_gestao_colab->item(linha,0)->text();
+            QSqlQuery query;
+            query.prepare("DELETE FROM tb_colaboradores WHERE id_colab="+id);
+            if(query.exec())
+            {
+                // deleta a linha selecionada
+                ui->tabela_gestao_colab->removeRow(linha);
+                QMessageBox::information(this,"Colaborador Deletado","Colaborador foi deletado com sucesso");
+            }
+            else{
+                QMessageBox::warning(this,"Falha na Exclusão", "O colaborador não foi removido");
+            }
+
+        }
     }
 }
 
