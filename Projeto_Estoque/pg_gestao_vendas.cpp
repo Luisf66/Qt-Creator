@@ -153,3 +153,32 @@ void pg_gestao_vendas::on_btn_filtrar_clicked()
     }
 }
 
+
+void pg_gestao_vendas::on_btn_pdf_clicked()
+{
+    QString nome_arquivo = QDir::currentPath() + "/" + ui->tabela_vendas->item(ui->tabela_vendas->currentRow(),0)->text() + "_vendas.pdf";
+    QPrinter printer;
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(nome_arquivo);
+
+    QPainter painter;
+    if(!painter.begin(&printer))
+    {
+        qDebug() << "Falha na Abetura do PDF";
+        return;
+    }
+
+    int linha = 200;
+    int salto = 20;
+
+    painter.drawText(25,25,"Data: " + ui->tabela_vendas->item(ui->tabela_vendas->currentRow(),1)->text());
+    painter.drawText(25,50,"Hora: " + ui->tabela_vendas->item(ui->tabela_vendas->currentRow(),2)->text());
+    painter.drawText(25,75,"Colaborador: " + ui->tabela_vendas->item(ui->tabela_vendas->currentRow(),3)->text());
+    painter.drawText(25,100,"Valor Total: " + ui->tabela_vendas->item(ui->tabela_vendas->currentRow(),4)->text());
+    painter.drawText(25,125,"Pagamento: " + ui->tabela_vendas->item(ui->tabela_vendas->currentRow(),5)->text());
+
+    painter.end();
+
+    QDesktopServices::openUrl(QUrl("file:///"+nome_arquivo));
+}
+
