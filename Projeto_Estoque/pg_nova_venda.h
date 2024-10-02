@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QTableWidget>
+#include <QDebug>
 
 
 #include "Conexao.h"

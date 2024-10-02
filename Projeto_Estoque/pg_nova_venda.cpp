@@ -164,7 +164,7 @@ void pg_nova_venda::on_btn_finalizar_venda_clicked()
         int id_venda = 0;
         QString msg_fim_venda;
         double total = Calcula_Total(ui->tw_listar_produtos,4);
-        QString data = QDate::currentDate().toString("yyyy-mm-dd");
+        QString data = QDate::currentDate().toString("dd/MM/yyyy");
         QString hora = QTime::currentTime().toString("hh:mm:ss");
         QSqlQuery query;
         query.prepare("INSERT INTO tb_vendas (data_venda, hora_venda, id_colaborador, valor_total, id_tipo_pagamento) "
@@ -196,6 +196,7 @@ void pg_nova_venda::on_btn_finalizar_venda_clicked()
                     linha_atual++;
                 }
                 else{
+                    qDebug() << "Falha na Query: " << query.lastError().text();
                     QMessageBox::warning(this,"Falha na Inserção", "Os dados não foram inseridos na produtosVendas");
                 }
             }

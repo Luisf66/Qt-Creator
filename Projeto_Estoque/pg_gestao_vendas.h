@@ -20,6 +20,11 @@ public:
     ~pg_gestao_vendas();
     Conexao con;
 
+private slots:
+    void on_tabela_vendas_itemSelectionChanged();
+
+    void on_btn_filtrar_clicked();
+
 private:
     Ui::pg_gestao_vendas *ui;
 };
